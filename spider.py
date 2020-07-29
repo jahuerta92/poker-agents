@@ -99,7 +99,7 @@ wait = WebDriverWait(browser, 10)
 
 def select_player_graph(w, b, p, init=False):
     b.get(URL_FORMAT.format(p))
-    b.implicitly_wait(10)
+    b.implicitly_wait(5)
     check = b.find_elements_by_xpath(ZERO_ROW_XPATH)
     if len(check) > 0:
         play = check[0]
@@ -121,8 +121,12 @@ def clear_player_graph(w, b):
         return None
     #w.until(EC.element_to_be_clickable((By.CSS_SELECTOR, '.delete'))).click()
 
+
+from banned import banned
+
+
 for player in PLAYERS:
-    if '{}.pkl'.format(player) not in [f for f in os.walk(DATASET_DIR)][0][2]:
+    if '{}.pkl'.format(player) not in [f for f in os.walk(DATASET_DIR)][0][2] and player not in banned:
         #print(browser.find_element_by_xpath('/html/body/div[2]/div[2]/div[1]/div[1]/b').text)
         check = select_player_graph(wait, browser, player, init)
         if not check:

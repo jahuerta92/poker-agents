@@ -1891,3 +1891,59 @@ JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?447814912
 JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: ReferenceError: FB is not defined
 JavaScript error: chrome://marionette/content/proxy.js, line 287: NS_ERROR_NOT_INITIALIZED
 1595945339275	Marionette	INFO	Stopped listening on port 39193
+1596009908094	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile30aVku"
+1596009911071	Marionette	INFO	Listening on port 35175
+1596009911118	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+1596010848360	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileWzlXa5"
+1596010850252	Marionette	INFO	Listening on port 36439
+1596010850265	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+1596011106662	Marionette	INFO	Stopped listening on port 35175
+1596014161698	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilezi5Ou0"
+1596014163744	Marionette	INFO	Listening on port 45169
+1596014163804	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+1596014176866	Marionette	INFO	Stopped listening on port 36439
+1596015194671	Marionette	INFO	Stopped listening on port 45169
+1596015202711	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileH6bbDY"
+1596015204719	Marionette	INFO	Listening on port 41375
+1596015204819	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+1596017110250	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileY8RYgC"
+1596017112298	Marionette	INFO	Listening on port 40315
+1596017112355	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+1596017244881	Marionette	INFO	Stopped listening on port 41375
+1596017742337	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile6eF54T"
+1596017744321	Marionette	INFO	Listening on port 36315
+1596017744357	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+JavaScript error: chrome://marionette/content/proxy.js, line 287: NS_ERROR_NOT_INITIALIZED
+1596017758847	Marionette	INFO	Stopped listening on port 36315
+1596017766132	Marionette	INFO	Stopped listening on port 40315
+1596017781654	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileIYJVvT"
+1596017783700	Marionette	INFO	Listening on port 42673
+1596017783771	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+1596018338713	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilegNl13e"
+1596018340591	Marionette	INFO	Listening on port 34345
+1596018340618	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1596018360747	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileoPMYEe"
+1596018362716	Marionette	INFO	Listening on port 34935
+1596018362761	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://es.sharkscope.com/javascript/index_es.min.js?4478149121d00daad174d6ff481dabb4, line 1: TypeError: $.sharkscope.metadata is undefined
+1596018383914	Marionette	INFO	Stopped listening on port 42673
+1596020174858	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilecPn8p6"
+1596020176904	Marionette	INFO	Listening on port 36569
+1596020176963	Marionette	WARN	TLS certificate errors will be ignored for this session
+1596020186895	Marionette	INFO	Stopped listening on port 36569
+1596034647712	Marionette	INFO	Stopped listening on port 34935

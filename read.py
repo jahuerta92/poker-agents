@@ -11,7 +11,7 @@ from datetime import datetime
 
 
 DATASET_DIR = './dataset'
-STANDARD_RANGE = [0, 0.3, 0.6, 1, 3, 6, 10, 30, 60, 100, 300, 600, 1000, 3000, 6000]
+STANDARD_RANGE = [0, 0.25, 0.5, 0.75, 1, 2.5, 5, 7.5, 10, 25, 50, 75, 100, 250, 500, 750, 1000]
 COLS_ROI = ['ROI_{}'.format(n) for n in STANDARD_RANGE] + ['ROI_Other']
 COLS_RAKE = ['RAKE_{}'.format(n) for n in STANDARD_RANGE] + ['RAKE_Other']
 COLS_GAMES = ['GAMES_{}'.format(n) for n in STANDARD_RANGE] + ['GAMES_Other']
@@ -36,12 +36,13 @@ def safe_division(n, d):
 
 def approximate(games, roi, rake, game_value, standardized_range):
     standard_dict = {k: [] for k in standardized_range}
-    roi_dict = {k: -1 for k in standardized_range}
-    games_dict = {k: -1 for k in standardized_range}
-    rake_dict = {k: -1 for k in standardized_range}
-    roi_dict['Other'] = -1
-    rake_dict['Other'] = -1
-    games_dict['Other'] = -1
+    roi_dict = {k: None for k in standardized_range}
+    games_dict = {k: None for k in standardized_range}
+    rake_dict = {k: None for k in standardized_range}
+
+    roi_dict['Other'] = None
+    rake_dict['Other'] = None
+    games_dict['Other'] = None
 
     if game_value[-1] == 'Other':
         other_g, other_roi, other_rake = games[-1], roi[-1], rake[-1]
