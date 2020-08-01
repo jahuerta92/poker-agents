@@ -33,7 +33,7 @@ def get_players(b, url):
 
 players = set(get_players(browser, URL_0) + get_players(browser, URL_1) + get_players(browser, URL_2) +  get_players(browser, URL_3))
 control = {'etilEnipS', 'frimija26', 'LACHATATATA', 'Cocochamelle', 'Ryujin', 'D0ntCryBB', 'BTCto1M', 'Cesar Polska', 'rorro29', 'Hari86'}
-bots = {'kelly59242'}
+bots = {'kelly59242', 'Juju75002', 'renaud220', 'Zizou2885', 'patouf97320', 'Titeuf0713', 'titi84330', 'volpi84120'}
 
 players.update(control)
 players.update(bots)
@@ -123,7 +123,6 @@ def clear_player_graph(w, b):
 
 
 from banned import banned
-
 
 for player in PLAYERS:
     if '{}.pkl'.format(player) not in [f for f in os.walk(DATASET_DIR)][0][2] and player not in banned:

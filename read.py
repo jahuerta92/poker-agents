@@ -5,7 +5,6 @@ import re
 
 import pandas as pd
 import numpy as np
-import scipy as sp
 
 from datetime import datetime
 
@@ -19,7 +18,7 @@ COLS_GAMES = ['GAMES_{}'.format(n) for n in STANDARD_RANGE] + ['GAMES_Other']
 CFG = tsfel.get_features_by_domain()
 TSFEL_COLS = ['{}'.format(n) for n in tsfel.time_series_features_extractor(CFG, np.random.rand(10), fs=1).columns]
 COLS_GAIN = ['GAIN_{}'.format(n[2:]) for n in TSFEL_COLS]
-COLS_GPD = ['GAIN_{}'.format(n[2:]) for n in TSFEL_COLS]
+COLS_GPD = ['GPD_{}'.format(n[2:]) for n in TSFEL_COLS]
 
 COIN_FINDER = re.compile(r'[^\d.]+')
 
@@ -114,19 +113,34 @@ def get_stats(pi, file):
 
 player_set = pd.DataFrame(columns=COLS_GAIN + COLS_GPD + COLS_ROI + COLS_RAKE + COLS_GAMES)
 max_players = len(files)
+now = datetime.now()
+eta_avg = []
 
 for i, ff in enumerate(files):
     with open(os.path.join(DATASET_DIR, ff), 'rb') as f:
         player_info = pickle.load(f)
-        now = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
         progress = '{}/{} {:.2f}%'.format(i+1, max_players, (i+1) * 100 / max_players)
+
 
         try:
             row = get_stats(player_info, ff)
             player_set = player_set.append(row)
-            print('[{}] (Progress: {}) --- Player from file {} added'.format(now, progress, ff))
-        except:
-            print('[{}] (Progress: {}) --- Ignored file {} on failure'.format(now, progress, ff))
 
+            interval = (datetime.now() - now)
+            now = datetime.now()
+            eta_avg.append(interval)
+            eta = np.mean(eta_avg) * (max_players - i - 1)
+            eta_m_str = (eta.seconds // 60)
+            eta_s_str = (eta.seconds % 60)
+
+            print('[ETA: {}:{}] (Progress: {}) --- Player from file {} added'.format(eta_m_str, eta_s_str, progress, ff))
+        except:
+            interval = (datetime.now() - now)
+            eta_avg.append(interval)
+            eta = np.mean(eta_avg) * (max_players - i - 1)
+            eta_m_str = (eta.seconds // 60)
+            eta_s_str = (eta.seconds % 60)
+
+            print('[ETA: {}:{}] (Progress: {}) --- Player from file {} added'.format(eta_m_str, eta_s_str, progress, ff))
 
 player_set.to_csv('player_processed.csv')
