@@ -1,0 +1,21 @@
+import pandas as pd
+import os
+import random
+import pickle
+
+DATASET_DIR = './dataset'
+CONTROL_REAL = {'etilEnipS', 'frimija26', 'LACHATATATA', 'Cocochamelle', 'Ryujin', 'D0ntCryBB', 'BTCto1M', 'Cesar Polska', 'rorro29', 'Hari86'}
+CONTROL_BOTS = {'kelly59242', 'Juju75002', 'renaud220', 'Zizou2885', 'patouf97320', 'Titeuf0713', 'titi84330', 'volpi84120'}
+
+files = {f[:-4]: i for i, f in enumerate([f for f in os.walk(DATASET_DIR)][0][2])}
+x = random.choices(list(files.keys()), k=50) + list(CONTROL_REAL) + list(CONTROL_BOTS)
+y = [files[i] for i in x]
+y.sort()
+
+id_files = {v: k for k, v in files.items()}
+
+with open('selected_players_idx.pkl', 'wb') as f:
+    pickle.dump(y, f)
+
+with open('indexed_players.pkl', 'wb') as f:
+    pickle.dump(id_files, f)
