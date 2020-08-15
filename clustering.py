@@ -10,7 +10,7 @@ from sklearn.cluster import Birch, DBSCAN
 from sklearn.cluster import KMeans, MiniBatchKMeans, MeanShift
 from sklearn.cluster import OPTICS, SpectralClustering
 
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import RobustScaler
 
 from sklearn.metrics import silhouette_score, davies_bouldin_score
 from sklearn.metrics import calinski_harabasz_score
@@ -23,9 +23,9 @@ from features import FEATURES
 
 CUSTOM = list(FEATURES.keys()) + ['TOTAL_RAKE']#, 'GAMES_PER_STEP']
 
-MAX_CORR = 0.99
-MIN_STD = 0.001
-N_FEATURES = 15
+MAX_CORR = 1
+MIN_STD = 0
+N_FEATURES = 3
 
 RESULTS = 'results'
 CLUSTER_RANGE = range(2, 5)
@@ -41,6 +41,7 @@ CONTROL_BOTS = {'kelly59242'}#, 'Juju75002', 'renaud220', 'Zizou2885', 'patouf97
 methods = {'{}_c{}'.format(k, i): alg(n_clusters=i) for k, alg in METHODS.items() for i in CLUSTER_RANGE}
 
 methods.update({'mean_shift': MeanShift(),
+                'dbscan': DBSCAN(),
                 'optics': OPTICS()})
 #methods.update({'dbscan_e{}'.format(i): DBSCAN(eps=i/10) for i in range(1, 10, 1)})
 
@@ -52,14 +53,18 @@ clusters = {k: [] for k in methods.keys()}
 
 metric_measures = pd.DataFrame(columns=list(methods.keys()), index=list(metrics.keys()))
 
-data = pd.read_csv('player_processed.csv', index_col=0).dropna(how="all")
+data = pd.read_csv('player_processed.csv', index_col=0).dropna(how="all").fillna(0)
 
 
-scaler = MinMaxScaler()
+scaler = RobustScaler()
 selector = VarianceThreshold(MIN_STD)
 reductor = SparseRandomProjection(N_FEATURES, random_state=1)
 
-data_scaled = pd.DataFrame(scaler.fit_transform(data),
+scaled = scaler.fit_transform(data)
+scaled[scaled > 10] = 10
+scaled[scaled < -10] = -10
+
+data_scaled = pd.DataFrame(scaled,
                            columns=data.columns,
                            index=data.index)
 data_scaled.fillna(0, inplace=True)
@@ -93,5 +98,5 @@ clusters['suspected_bot'] = -1
 clusters.loc[CONTROL_REAL, 'suspected_bot'] = 0
 clusters.loc[CONTROL_BOTS, 'suspected_bot'] = 1
 
-clusters.sort_values('suspected_bot', ascending=False).to_csv(os.path.join(RESULTS, 'clusters.csv'))
-metric_measures.transpose().to_csv(os.path.join(RESULTS, 'cluster_metrics.csv'))
+clusters.sort_values('suspected_bot', ascending=False).to_csv(os.path.join(RESULTS, 'clusters_q.csv'))
+metric_measures.transpose().to_csv(os.path.join(RESULTS, 'cluster_metrics_q.csv'))
